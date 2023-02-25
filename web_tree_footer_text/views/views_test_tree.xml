@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="test_tree_view_tree" model="ir.ui.view">
+            <field name="name">test.tree.view.tree</field>
+            <field name="model">test.tree</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" agg_text='AVG: '/>
+                    <field name="test_int" avg='Avg' agg_text='AVG: '/>
+                    <field name="test_float" sum="Total Float" agg_text='Float: '/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view for "model" -->
+        <record id="test_tree_view_form" model="ir.ui.view">
+            <field name="name">test_tree_view_form</field>
+            <field name="model">test.tree</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="test_int"/>
+                            <field name="test_float"/>
+                        </group>
+                        <notebook>
+                            <page string="Info">
+                                <field name="line_ids">
+
+                                    <tree editable="bottom">
+                                        <field name="name" agg_text='AVG: '/>
+                                        <field name="test_int" avg='Avg' agg_text='AVG: '/>
+                                        <field name="test_float" sum="Total Float" agg_text='Float: '/>
+                                    </tree>
+
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Main window action for "model" -->
+        <record id="test_tree_act_window" model="ir.actions.act_window">
+            <field name="type">ir.actions.act_window</field>
+            <field name="name">Test Tree</field>
+            <field name="res_model">test.tree</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Main menu for "model" -->
+        <record id="menu_test_tree" model="ir.ui.menu">
+            <field name="name">TEST TREE</field>
+            <field name="action" ref="test_tree_act_window" />
+        </record>
+    </data>
+</odoo>
+
