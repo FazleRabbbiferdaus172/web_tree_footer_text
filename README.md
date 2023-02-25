@@ -1,0 +1,1 @@
+This is an odoo module the let's you add footer text for aggregates (e.g. sum, avg, min, max) in any tree/list view. This module adds a new attribute "agg_text" which can be user to add the footer text.
